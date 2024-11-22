@@ -1,0 +1,77 @@
+# Define global variables 
+
+MAIN_STAT					= 0x0000
+MAIN_CTRL 					= 0x0004
+FPGA_VERSION 				= 0x0008
+BYPASS_CTRL 				= 0x000C
+TREF_CTRL 					= 0x0010
+PERI_CTRL 					= 0x0014
+CAPT_STAT 					= 0x0018
+PHAZ_CTRL1 					= 0x0020
+PHAZ_CTRL2 					= 0x0024
+GAIN_CTRL1 					= 0x0028
+GAIN_CTRL2 					= 0x002C
+DLY_CTRL1 					= 0x0030
+DLY_CTRL2 					= 0x0034
+CAPT_CTRL1 					= 0x0038
+CAPT_CTRL2 					= 0x003C
+CORR_CTRL1 					= 0x0040
+CORR_CTRL2 					= 0x0044
+CORR_CTRL3 					= 0x0048
+CORR_STAT1 					= 0x0050
+CORR_STAT2 					= 0x0054
+
+PERIOD_1MSEC				= 245760		#// 1 msec
+PERIOD_10MSEC				= 2457600		#// 10 msec
+RX1  						= 0
+RX2							= 1
+
+RX1_P_I						= 16384
+RX1_P_Q						= 0
+RX2_P_I						= 16384
+RX2_P_Q						= 0
+
+RX1_PHAZ					= (((RX1_P_Q & 0x7FFF) << 16) | (RX1_P_I & 0x7FFF))
+RX2_PHAZ					= (((RX2_P_Q & 0x7FFF) << 16) | (RX2_P_I & 0x7FFF))
+
+UNITY_GAIN					= (1 << 20)
+
+FDLY_RELOAD					= (1 << 24)	#// Bug fix 2024.8.19
+IDLY_RST					= (1 << 12)
+
+CAPT_SEL_CDC				= 0
+CAPT_SEL_FIR				= 4
+CAPT_SEL_IDLY				= 8
+CAPT_SEL_FDLY				= 9
+CAPT_SEL_PHAZ				= 10
+CAPT_SEL_GAIN				= 11
+CAPT_SEL_RS245				= 12
+CAPT_SEL_RS122				= 13
+CAPT_SEL_RS61				= 14
+CAPT_SEL_RS30				= 15
+
+CAPT_LEN_10MS_491			= (4915200 * 8)
+CAPT_LEN_10MS_245			= (2457600 * 8)
+CAPT_LEN_10MS_122			= (1228800 * 8)
+CAPT_LEN_10MS_61			= (614400 * 8)
+CAPT_LEN_10MS_30			= (307200 * 8)
+
+TEST_CAPT_LENGTH			= 65536
+SET_SA_START				= (1 << 30)
+SET_RX_START				= (1 << 31)
+
+MIN_DMA_LENGTH				= 16
+MAX_DMA_LENGTH				= (1 << 26)
+DMA_LENGTH_32MB				= (1 << 25)
+DMA_LENGTH_16MB				= (1 << 24)
+
+# S2MM AXI DMA engine offset	
+AXI_S2MM_DMA_CTRL			= 0x30
+AXI_S2MM_DMA_STATUS			= 0x34
+AXI_S2MM_DMA_ADDR_LSB		= 0x48
+AXI_S2MM_DMA_ADDR_MSB		= 0x4C
+AXI_S2MM_DMA_LENGTH			= 0x58
+
+# SADMA engine register address
+SADMA_BASE_ADDRESS          = 0x80030000
+SADMA_ADDRESS_RANGE         = 0x100
